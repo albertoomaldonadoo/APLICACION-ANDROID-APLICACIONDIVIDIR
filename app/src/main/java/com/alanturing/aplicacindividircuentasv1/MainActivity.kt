@@ -98,20 +98,41 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 activeTrackColor = MaterialTheme.colorScheme.secondary,
                 inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer,
             ),
-            steps = 3,
-            valueRange = 0f..5f
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp),
+            enabled = checked,
+            steps = 4,
+            valueRange = 0.1f..5f
         )
-        Text(text = sliderPosition.toString())
+        Text(text = sliderPosition.toInt().toString())
 
+        var cantidadAcontar: Int? = cantidad.toIntOrNull()
+        var comensalesAcontar: Int? = comensales.toIntOrNull()
+        var solucion by remember { mutableStateOf("") }
 
         Button (
-            onClick = {}
+            onClick = {
+                if (cantidadAcontar != null && comensalesAcontar != null && comensalesAcontar > 0) {
+                    var propina: Float = 0F
+                    if(checked == true){
+                        propina = cantidadAcontar * ((sliderPosition*5)/100)
+                    }
+                    var total = cantidadAcontar+propina
+                    var cantidadTotalPersonas = total/comensalesAcontar
+                    solucion = "Cantidad total: $total Cada uno: $cantidadTotalPersonas"
+                } else {
+                    solucion = "Error en la cuenta."
+                }
+            },
+            modifier = Modifier.fillMaxWidth().padding(10.dp)
 
         ) {
             Text (
                 text = "Calcular",
             )
         }
+            Text (
+                text = "$solucion",
+            )
     }
 }
 
