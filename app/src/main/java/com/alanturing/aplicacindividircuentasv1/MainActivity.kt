@@ -125,7 +125,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                     }
                     var total = cantidadAcontar+propina
                     var cantidadTotalPersonas = total/comensalesAcontar
-                    solucion = "Cantidad total: $total Cada uno: $cantidadTotalPersonas"
+                    solucion = "Cantidad total: $total€ \n" +
+                                "Cada uno: $cantidadTotalPersonas€"
                 } else {
                     solucion = "Error en la cuenta."
                 }
