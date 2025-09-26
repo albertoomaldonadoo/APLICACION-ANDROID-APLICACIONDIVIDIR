@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -61,7 +62,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             label = { Text("CANTIDAD") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             singleLine = true,
-            modifier = Modifier.padding(50.dp)
+            modifier = Modifier.padding(50.dp),
+            keyboardActions = KeyboardActions {
+                KeyboardType.Number
+            }
         )
 
 
@@ -71,7 +75,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             label = { Text("COMENSALES") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             singleLine = true,
-            modifier = Modifier.padding(50.dp)
+            modifier = Modifier.padding(50.dp),
+            keyboardActions = KeyboardActions {
+                KeyboardType.Number
+            }
         )
 
         Text("Redondear Propina")
