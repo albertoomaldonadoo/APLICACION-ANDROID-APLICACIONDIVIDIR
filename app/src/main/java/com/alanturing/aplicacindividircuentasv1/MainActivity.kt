@@ -4,20 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RichTooltip
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
@@ -25,19 +21,18 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TooltipBox
-import androidx.compose.material3.TooltipDefaults
-import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import com.alanturing.aplicacindividircuentasv1.ui.theme.AplicaciónDividirCuentasV1Theme
 
 class MainActivity : ComponentActivity() {
@@ -63,52 +58,59 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     var comensales by remember { mutableStateOf("") }
     var checked by remember { mutableStateOf(false) }
     var sliderPosition by remember { mutableFloatStateOf(0f) }
-    Column {
+    Text(stringResource(R.string.credit_text), style = MaterialTheme.typography.bodySmall)
 
-        Text("Trabajo Realizado por: Alberto Maldonado Triana 2ºDAM")
+    Column (Modifier.padding(top = 80.dp).padding(8.dp),
+        verticalArrangement = Arrangement.spacedBy(15.dp)){
+
 
 
         TextField(
             value = cantidad,
             onValueChange = { cantidad = it },
-            label = { Text("CANTIDAD") },
+            label = { Text(stringResource(R.string.label_amount)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             singleLine = true,
-            modifier = Modifier.padding(50.dp),
+            modifier = Modifier.fillMaxWidth(),
             keyboardActions = KeyboardActions {
                 KeyboardType.Number
             }
         )
-
 
         TextField(
             value = comensales,
             onValueChange = { comensales = it },
-            label = { Text("COMENSALES") },
+            label = { Text(stringResource(R.string.label_people)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             singleLine = true,
-            modifier = Modifier.padding(50.dp),
+            modifier = Modifier.fillMaxWidth(),
             keyboardActions = KeyboardActions {
                 KeyboardType.Number
             }
         )
 
-        Text("Redondear Propina")
-        Switch(
-            checked = checked,
-            onCheckedChange = {
-                checked = it
-            },
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colorScheme.primary,
-                checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,
-                uncheckedThumbColor = MaterialTheme.colorScheme.secondary,
-                uncheckedTrackColor = MaterialTheme.colorScheme.secondaryContainer,
+        Row (verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(165.dp),
+            modifier = Modifier.fillMaxWidth()){
+            Text("Redondear Propina")
+            Switch(
+                checked = checked,
+                onCheckedChange = {
+                    checked = it
+                },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                    checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,
+                    uncheckedThumbColor = MaterialTheme.colorScheme.secondary,
+                    uncheckedTrackColor = MaterialTheme.colorScheme.secondaryContainer,
+                )
             )
-        )
+        }
 
 
-        Text("Valoración")
+
+
+        Text(stringResource(R.string.label_rating))
         Slider(
             value = sliderPosition,
             onValueChange = { sliderPosition = it },
@@ -147,11 +149,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
         ) {
             Text (
-                text = "Calcular",
+                text = (stringResource(R.string.button_calculate)),
             )
         }
             Text (
-                text = "$solucion",
+                text = solucion, style = MaterialTheme.typography.bodyMedium,
             )
     }
 }

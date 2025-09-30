@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplicación Dividir Cuentas</string>
+    <string name="label_amount">Cantidad</string>
+    <string name="label_people">Comensales</string>
+    <string name="label_round_tip">Redondear Propina</string>
+    <string name="label_rating">Valoración</string>
+    <string name="button_calculate">Calcular</string>
+    <string name="error_message">Error en la cuenta.</string>
+    <string name="credit_text">Trabajo realizado por: Alberto Maldonado Triana 2ºDAM</string>
+</resources>

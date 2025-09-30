@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">AplicaciónDividirCuentasV1</string>
+    <string name="app_name">SplitBill App</string>
+    <string name="label_amount">Amount</string>
+    <string name="label_people">People</string>
+    <string name="label_round_tip">Round Tip</string>
+    <string name="label_rating">Rating</string>
+    <string name="button_calculate">Calculate</string>
+    <string name="error_message">Error in the calculation.</string>
+    <string name="credit_text">Work done by: Alberto Maldonado Triana 2ºDAM</string>
 </resources>
